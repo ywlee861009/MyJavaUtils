@@ -22,4 +22,15 @@ public class DeviceUtils {
 
         return size;
     }
+    
+    /**
+     * dp를 px로 변환
+     *
+     * @param context
+     * @param dp
+     * @return
+     */
+    public static int dpToPixel(Context context, int dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
+    }
 }
