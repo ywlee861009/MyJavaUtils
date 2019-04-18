@@ -33,4 +33,17 @@ public class DeviceUtils {
     public static int dpToPixel(Context context, int dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
     }
+    
+    /**
+     * px를 dp로 변환
+     *
+     * @param context
+     * @param px
+     * @return
+     */
+    public static int pxToDp(Context context, int px) {
+        int dp = (int) (px / context.getResources().getDisplayMetrics().density);
+        return dp;
+    }
+    
 }
