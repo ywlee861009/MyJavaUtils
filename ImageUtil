@@ -23,7 +23,9 @@ public class ImageUtil {
         int width = origin.getWidth();
         int height = origin.getHeight();
 
-        if (origin.getHeight() <= px)
+        // 상하를 자른다면 height > px 여야하고, 좌우를 자른다면, width < px 여야 한다.
+        if ((((direction == DIRECTION_TOP) || (direction == DIRECTION_BOTTOM)) && (origin.getHeight() <= px)) ||
+                (((direction == DIRECTION_LEFT) || (direction == DIRECTION_RIGHT)) && (origin.getWidth() <= px)))
             return origin;
 
         switch (direction) {
