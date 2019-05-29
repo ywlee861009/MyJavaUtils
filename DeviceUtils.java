@@ -5,6 +5,25 @@
  * @author YWLee
  */
 public class DeviceUtils {
+    
+    /**
+     * 기기 스크린 사이즈 반환 (large, small, xlarge..)
+     */
+    public static String getScreenLayoutSize(Context c) {
+        String screenSize = "";
+        if ((c.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE)
+            screenSize = "Large";
+        else if ((c.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_SMALL)
+            screenSize = "Small";
+        else if ((c.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_NORMAL)
+            screenSize = "Normal";
+        else if ((c.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE)
+            screenSize = "Xlarge";
+        else
+            screenSize = "none";    
+    }
+    
+    
     /**
      * 기기 사이즈를 Point 객체로 리턴
      * 
