@@ -37,6 +37,15 @@ abstract class BaseActivity<VB: ViewDataBinding, VM:BaseViewModel>: AppCompatAct
      */
     protected abstract fun initBindingVariables()
 
+    /**
+     * ViewModel 변수 변화 감지
+     */
+    protected abstract fun observe()
+
+    /**
+     * View 에서 사용할 최초 로직
+     */
+    protected abstract fun start()
 
 
 
@@ -45,6 +54,8 @@ abstract class BaseActivity<VB: ViewDataBinding, VM:BaseViewModel>: AppCompatAct
 
         initDataBinding()
         initBindingVariables()
+        observe()
+        start()
     }
 
     override fun onStop() {
@@ -58,7 +69,7 @@ abstract class BaseActivity<VB: ViewDataBinding, VM:BaseViewModel>: AppCompatAct
      */
     private fun initDataBinding() {
         mBinding = DataBindingUtil.setContentView(this, getLayoutId())
-        mViewModel = ViewModelProviders.of(this).get(getViewModel())
+        mViewModel = ViewModelProviders.of(this)[getViewModel()]
         mBinding.lifecycleOwner = this
         mBinding.executePendingBindings()
     }
